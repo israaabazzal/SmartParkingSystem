@@ -313,18 +313,20 @@ http://localhost/smart-parking
 
 # 📸 Screenshots
 
-Screenshots demonstrating the system include:
+<p align="center">
+  <img src="screenshots/homePage.png" width="45%">
+  <img src="screenshots/userDashboard.png" width="45%">
+</p>
 
-- Home Page
-- User Dashboard
-- Administrator Dashboard
-- Parking Reservation
-- Parking Levels
-- Payment Page
-- Parking Statistics
-- Camera Monitoring
-- Gate Operation
+<p align="center">
+  <img src="screenshots/adminDashboard.png" width="45%">
+  <img src="screenshots/adminDashboard2.png" width="45%">
+</p>
 
+<p align="center">
+  <img src="screenshots/slotAssignmentMap.png" width="45%">
+  <img src="screenshots/Duration&Billing.png" width="45%">
+</p>
 ---
 
 # 🔄 Hardware Simulation
