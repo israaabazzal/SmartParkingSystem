@@ -1,0 +1,586 @@
+/* ═══════════════════════════════════════════════
+   SMART PARKING — user.css
+   ═══════════════════════════════════════════════ */
+
+/* ── User main layout ───────────────────────── */
+.user-main {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  padding: 90px 40px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.user-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 28px;
+  align-items: start;
+}
+
+.user-left,
+.user-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Shared card base ───────────────────────── */
+.greeting-card,
+.info-card,
+.timer-card,
+.cost-card,
+.payment-card,
+.waiting-card,
+.help-card {
+  background: rgba(2, 56, 89, 0.45);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(84, 172, 191, 0.18);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+/* ── Greeting card ──────────────────────────── */
+.greeting-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.greeting-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(167,235,242,0.45);
+  margin-bottom: 6px;
+}
+.greeting-card__plate {
+  font-family: var(--font-display);
+  font-size: 38px;
+  color: var(--c1);
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+.greeting-card__type {
+  font-size: 13px;
+  color: rgba(167,235,242,0.5);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  text-transform: capitalize;
+}
+.greeting-card__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.greeting-card__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.greeting-card__stat-val {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--c2);
+  line-height: 1;
+}
+.greeting-card__stat-label {
+  font-size: 11px;
+  color: rgba(167,235,242,0.4);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+/* Status pill */
+.status-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.status-pill--active {
+  background: rgba(84,172,191,0.15);
+  color: var(--c2);
+  border: 1px solid rgba(84,172,191,0.3);
+}
+.status-pill--waiting {
+  background: rgba(255,180,50,0.12);
+  color: #f0b860;
+  border: 1px solid rgba(255,180,50,0.3);
+}
+
+/* ── Info card ──────────────────────────────── */
+.info-card__header,
+.cost-card__header,
+.payment-card__title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(167,235,242,0.45);
+  margin-bottom: 16px;
+}
+
+.info-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.info-item__label {
+  font-size: 11px;
+  color: rgba(167,235,242,0.4);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.info-item__value {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--c1);
+}
+.info-item__value--accent {
+  color: var(--c2);
+  font-size: 18px;
+}
+.info-item__value--warn {
+  color: #f0b860;
+}
+
+/* ── Timer card ─────────────────────────────── */
+.timer-card {
+  text-align: center;
+  background: rgba(1, 28, 64, 0.6);
+  border-color: rgba(84,172,191,0.25);
+}
+.timer-card__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(167,235,242,0.45);
+  margin-bottom: 12px;
+}
+.timer-card__display {
+  font-family: var(--font-display);
+  font-size: 56px;
+  color: var(--c2);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(84,172,191,0.3);
+  transition: color 0.3s;
+}
+.timer-card__display--stopped {
+  color: #f0b860;
+}
+.timer-card__started {
+  font-size: 12px;
+  color: rgba(167,235,242,0.35);
+  font-family: var(--font-mono);
+  margin-top: 10px;
+}
+
+/* ── Cost card ──────────────────────────────── */
+.cost-card__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cost-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(84,172,191,0.08);
+}
+.cost-row:last-child { border-bottom: none; }
+.cost-row__label {
+  font-size: 13px;
+  color: rgba(167,235,242,0.55);
+  font-family: var(--font-mono);
+}
+.cost-row__val {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--c1);
+  font-weight: 500;
+}
+.cost-row--violation .cost-row__val { color: #e07060; }
+.cost-row--total {
+  padding-top: 12px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(84,172,191,0.2);
+  border-bottom: none;
+}
+.cost-row--total .cost-row__label {
+  font-size: 14px;
+  color: var(--c1);
+  font-weight: 500;
+}
+.cost-row--total .cost-row__val {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--c2);
+}
+
+/* ── Payment card ───────────────────────────── */
+.payment-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.payment-card__amount {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--c2);
+}
+
+/* Payment message */
+.payment-msg {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.payment-msg--success {
+  background: rgba(84,172,191,0.12);
+  border: 1px solid rgba(84,172,191,0.3);
+  color: var(--c2);
+}
+.payment-msg--error {
+  background: rgba(220,60,60,0.1);
+  border: 1px solid rgba(220,60,60,0.3);
+  color: #f08080;
+}
+
+/* Pay methods */
+.pay-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pay-method {
+  border: 1px solid rgba(84,172,191,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.pay-method--active {
+  border-color: rgba(84,172,191,0.4);
+}
+
+.pay-method__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  background: rgba(1,28,64,0.4);
+  transition: background 0.2s;
+}
+.pay-method__header:hover {
+  background: rgba(84,172,191,0.06);
+}
+.pay-method__icon {
+  width: 36px; height: 36px;
+  background: rgba(84,172,191,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c2);
+  flex-shrink: 0;
+}
+.pay-method__name {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c1);
+  letter-spacing: 0.04em;
+}
+.pay-method__chevron {
+  font-size: 20px;
+  color: rgba(167,235,242,0.3);
+  transition: transform 0.2s;
+  line-height: 1;
+}
+.pay-method--active .pay-method__chevron {
+  transform: rotate(90deg);
+}
+
+.pay-method__body {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid rgba(84,172,191,0.1);
+  background: rgba(1,28,64,0.25);
+}
+.pay-method__body.open {
+  display: flex;
+}
+
+/* Pay fields */
+.pay-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.pay-field label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(167,235,242,0.4);
+}
+.pay-field input {
+  background: rgba(1,28,64,0.5);
+  border: 1px solid rgba(84,172,191,0.18);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--c1);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.pay-field input:focus {
+  border-color: var(--c2);
+  box-shadow: 0 0 0 2px rgba(84,172,191,0.1);
+}
+.pay-field-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* Pay button */
+.btn-pay {
+  display: flex; align-items: center; justify-content: center;
+  height: 46px;
+  background: var(--c2);
+  color: var(--c5);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  margin-top: 4px;
+}
+.btn-pay:hover {
+  background: var(--c1);
+  box-shadow: 0 4px 16px rgba(84,172,191,0.25);
+  transform: translateY(-1px);
+}
+.btn-pay:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.btn-pay--cash {
+  background: rgba(84,172,191,0.15);
+  color: var(--c2);
+  border: 1px solid rgba(84,172,191,0.3);
+}
+.btn-pay--cash:hover {
+  background: rgba(84,172,191,0.25);
+  box-shadow: none;
+}
+
+.pay-cash-note {
+  font-size: 13px;
+  color: rgba(167,235,242,0.6);
+  line-height: 1.6;
+}
+
+/* ── Waiting card ───────────────────────────── */
+.waiting-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 36px 24px;
+}
+.waiting-card__icon {
+  color: var(--c2);
+  opacity: 0.7;
+}
+.waiting-card__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--c1);
+  letter-spacing: 0.04em;
+}
+.waiting-card__sub {
+  font-size: 13px;
+  color: rgba(167,235,242,0.5);
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+/* ── Help card ──────────────────────────────── */
+.help-card {
+  padding: 18px 24px;
+}
+.help-card__title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(167,235,242,0.4);
+  margin-bottom: 12px;
+}
+.help-card__items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.help-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(167,235,242,0.5);
+  font-family: var(--font-mono);
+}
+
+/* ── No session ─────────────────────────────── */
+.no-session {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60vh;
+  gap: 16px;
+}
+.no-session__icon { color: rgba(167,235,242,0.3); }
+.no-session__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--c1);
+}
+.no-session__sub {
+  font-size: 14px;
+  color: rgba(167,235,242,0.5);
+  line-height: 1.6;
+}
+.btn-back-home {
+  margin-top: 8px;
+  padding: 10px 24px;
+  border: 1px solid rgba(84,172,191,0.3);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--c2);
+  transition: background 0.2s;
+}
+.btn-back-home:hover { background: rgba(84,172,191,0.1); }
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 900px) {
+  .user-layout {
+    grid-template-columns: 1fr;
+  }
+  .user-main { padding: 90px 24px 48px; }
+}
+
+/* ═══════════════════════════════════════════════
+   MAP CARD
+   ═══════════════════════════════════════════════ */
+.map-card {
+  background: rgba(2, 56, 89, 0.45);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(84, 172, 191, 0.18);
+  border-radius: 16px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.map-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.map-card__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(167,235,242,0.45);
+}
+.map-card__slot-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--c2);
+  background: rgba(84,172,191,0.12);
+  border: 1px solid rgba(84,172,191,0.25);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.map-card__wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(1,28,64,0.4);
+}
+
+.map-card__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.map-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Slot highlight box */
+.slot-highlight {
+  fill: rgba(84, 172, 191, 0.18);
+  stroke: #54ACBF;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 8px rgba(84,172,191,0.8))
+          drop-shadow(0 0 16px rgba(84,172,191,0.5))
+          drop-shadow(0 0 30px rgba(84,172,191,0.3));
+  animation: slotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes slotPulse {
+  0%, 100% { opacity: 1;   stroke-width: 3; }
+  50%       { opacity: 0.5; stroke-width: 2; }
+}
+
+/* Path lines animate via JS (stroke-dashoffset trick) */
+#pathH, #pathV {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+#pathH.visible, #pathV.visible {
+  opacity: 1;
+}
